@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/home.css">
+        <title>
+            <%= locals.title %>
+        </title>
+        <script src="https://kit.fontawesome.com/8228c03d13.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+      <!-- <h1>Hey There We're using EJS template engine to render this htmp page</h1> -->
+        <h1 id="ContactList"><i class="fas fa-id-card"></i>  Contact List</h1>
+
+        <div id="ContactDetails">
+            <ul>
+                <% for(let i of contact_list) { %>
+                 
+                    <div id="list-item">
+                <li>
+                    
+                    
+                    <p>
+                        <%= i.name %>
+                    </p>
+
+                    <p>
+                        <%= i.phone %>
+                    </p>
+                
+                <div class="delete-button">
+                    <a href="/delete-contact/?id=<%= i._id %>">
+                        <p><i class="fas fa-minus-circle"></i></p>
+                    </a>
+                    
+                </div>
+                </li>
+                <div>
+            
+            <% } %>
+            
+            </ul>
+        </div>
+            <div id="AddContact">
+            <form action="/create-contact" method="POST">
+                Name: <input type="text" placeholder="Name" name="name" required>
+                Phone: <input type="text" placeholder="Phone" name="phone" required>
+                <button type="submit">Create contact</button>
+            </form>
+            </div>
+            
+        </div>
+
+        <script type="text/javascript" src="/js/home.js"></script>
+      
+    </body>
+</html>
